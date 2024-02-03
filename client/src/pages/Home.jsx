@@ -20,7 +20,6 @@ const Home = () => {
       <div className='mt-16'>
         <FormField />
       </div>
-
     </section>
   )
 }
