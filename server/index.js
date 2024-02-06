@@ -3,6 +3,8 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 
 import connectDB from './mongodb/connect.js';
+import postRoutes from './routes/postRoute.js';
+import dalleRoutes from './routes/dalleRoutes.js';
 
 dotenv.config();
 
@@ -12,6 +14,11 @@ app.use(cors());
 // Configure Express.js to parse incoming requests with JSON payloads
 // and set the maximum request body size to 50 megabytes
 app.use(express.json({ limit: '50mb' }))
+
+
+// handle api endpoint request
+app.use('/api/v1/post', postRoutes)
+app.use('/api/v1/dalle', dalleRoutes)
 
 app.get('/', async (req,res) => {
     res.send('Hello from DALL-E')
