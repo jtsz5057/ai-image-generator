@@ -21,7 +21,7 @@ router.route('/').post(async (req, res) => {
         const { prompt } = req.body;
 
         // Call the 'createImage' method of the 'openai' instance to generate an image based on the provided prompt
-        const aiResponse = await openai.createImage({
+        const aiResponse = await openai.create_image({
             prompt,
             n:1, //number of images to generate (1 image)
             size: '1024x2024', // size of the generated image
