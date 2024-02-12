@@ -21,15 +21,15 @@ router.route('/').post(async (req, res) => {
         const { prompt } = req.body;
 
         // Call the 'createImage' method of the 'openai' instance to generate an image based on the provided prompt
-        const aiResponse = await openai.create_image({
+        const aiResponse = await openai.images.generate({
             prompt,
             n:1, //number of images to generate (1 image)
-            size: '1024x2024', // size of the generated image
+            size: '1024x1024', // size of the generated image
             response_format: 'b64_json', // specify the response format as base64 encoded JSOn 
         });
 
         // Extract the base64 encoded image data from the API response
-        const image = aiResponse.data.data[0].b64_json;
+        const image = aiResponse.data[0].b64_json;
 
         // Send a JSON response containing the generated image data
         res.status(200).json({ photo: image });
